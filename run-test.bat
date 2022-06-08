@@ -1,0 +1,1 @@
+start /MAX cmd /c "cls && title CLient Test && cd venv/Scripts && activate && cd ../.. && python test-client.py --num 25 && timeout /t 10 /nobreak"
