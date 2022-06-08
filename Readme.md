@@ -1,4 +1,4 @@
-## **Customer Churn Demo API **
+## **Customer Churn Demo API**
 
 <br>
 
