@@ -34,6 +34,6 @@
 
 <pre>
 Bank - GBC, F2
-ISP  - RFC, F3
+ISP  - RFR, F3
 </pre>
 
