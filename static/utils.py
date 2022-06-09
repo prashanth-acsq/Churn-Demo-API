@@ -21,13 +21,16 @@ def clean_data(old_data: str) -> np.ndarray:
 
 
 def infer_churn_probability(data: np.ndarray, mode: str) -> tuple:
-    if mode == "bank": model = pickle.load(open("static/models/bank-customer-churn-model.pkl", "rb"))
-    elif mode == "isp": model = pickle.load(open("static/models/isp-customer-churn-model.pkl", "rb"))
+    if mode == "bank": 
+        model = pickle.load(open("static/models/bank-customer-churn-model.pkl", "rb"))
+        y_pred = model.predict(data)[0]
+        y_pred_proba = model.predict_proba(data)[0][1]
 
-    y_pred = model.predict(data)[0]
-    y_pred_proba = model.predict_proba(data)[0][1]
+        if y_pred == 0: 
+            return "Not Exited", y_pred_proba
+        else: 
+            return "Exited", y_pred_proba
 
-    if y_pred == 0: 
-        return "Not Exited", y_pred_proba
-    else: 
-        return "Exited", y_pred_proba
+    elif mode == "isp": 
+        model = pickle.load(open("static/models/isp-customer-churn-model.pkl", "rb"))
+        return "", model.predict(data)[0]
